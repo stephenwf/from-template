@@ -12,6 +12,7 @@
   "scripts": {
     "build": "nwb build-web-module",
     "clean": "nwb clean-module",
+    "prepublish": "npm run build",
     "link": "./link.sh"
   },
   "dependencies": {
