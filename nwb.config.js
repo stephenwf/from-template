@@ -6,6 +6,9 @@ module.exports = {
     esModules: false,
     umd: false
   },
+  babel: {
+    plugins: ['transform-runtime']
+  },
   webpack: {
     extra: {
       target: 'node',
