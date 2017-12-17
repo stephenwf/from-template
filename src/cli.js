@@ -37,12 +37,6 @@ program
         process.exit(1);
       });
 
-      // await any non-awaited promises.
-      await Promise.all(Object.values(generatedConfig)).catch(err => {
-        console.log(err);
-        process.exit(1);
-      });
-
       const templatePath = getTemplateDirectory(rootDirectory, _template);
       const destination = process.cwd();
 

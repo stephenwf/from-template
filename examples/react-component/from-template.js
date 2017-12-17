@@ -8,7 +8,6 @@ module.exports = async function({ask, packageJson, targetProject}) {
   return {
     name,
     pascalName: toPascal(name),
-    // Note: no await here, will be automatically awaited.
-    componentType: ask.bool('pure', 'Is your component Pure?', true) ? 'PureComponent' : 'Component',
+    componentType: await ask.bool('pure', 'Is your component Pure?', true) ? 'PureComponent' : 'Component',
   };
 };
