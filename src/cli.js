@@ -16,14 +16,18 @@ import {
 
 configurePrettyError(prettyError.start());
 
+function handleError(err) {
+  console.log(err);
+  process.exit(1);
+}
+
 program
     .version(fromTemplatePackageJson.version)
     .arguments('<package>')
     .action(async function (packageName) {
       const rootDirectory = getInputDirectory(packageName);
-      const configPath = getFromTemplateFile(rootDirectory, packageName);
+      const config = await getFromTemplateFile(rootDirectory, packageName).catch(handleError);
       const packageJson = getPackageJson();
-      const config = require(configPath);
       const argv = optimist.argv;
       const ask = new Ask(argv);
 
@@ -32,16 +36,13 @@ program
         argv,
         packageJson,
         targetProject: process.cwd()
-      })).catch(err => {
-        console.log(err);
-        process.exit(1);
-      });
+      })).catch(handleError);
 
       const templatePath = getTemplateDirectory(rootDirectory, _template);
       const destination = process.cwd();
 
       await copy(templatePath, destination, generatedConfig, (err, createdFiles) => {
-        if (err) throw err;
+        if (err) handleError(err);
 
         createdFiles.forEach(filePath => console.log(`${chalk.green('+ Created')} ${path.relative(process.cwd(), filePath)}`));
         console.log('');

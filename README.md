@@ -90,7 +90,36 @@ _template
 **Note:** These examples use Node 8's async in these examples. Longer configurations
       could use Promise.all instead of async/await.
       
-      
+## JSON Configuration
+Instead of using javascript for configuration, you can also specify a JSON file. This is 
+less flexible, but arguably quicker to develop. The file lives in the root of the project
+in the same place as the JS counter part.
+
+### Full example:
+from-template.json
+```
+{
+  "name": {
+    "$input": {
+      "message": "What is the name of the component?"
+    }
+  },
+  "type": {
+    "$choice": {
+      "message": "What is its type?",
+      "choices": ["choiceA", "choiceB"]
+    }
+  },
+  "isSomething": {
+    "$bool": {
+      "message": "A simple yes or no:",
+      "$true": "Its true!",
+      "$false": "Its false!"
+    }
+  }
+}
+```
+
 ## Creating vendor packages
 In order to create a vendor package, you need the same structure
 as the local templates, but with a package.json. You need this
