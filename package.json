@@ -1,6 +1,6 @@
 {
   "name": "from-template",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "CLI + NPM Scripts tool for template directories.",
   "bin": {
     "from-template": "./bin/from-template.js"
