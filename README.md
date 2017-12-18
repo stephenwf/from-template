@@ -29,7 +29,7 @@ The structure of local templates from your project root:
 ├── package.json
 ...
 ```
-You can see an example in the `examples/demo-project` directory.
+You can see an example in the [examples repository](https://github.com/stephenwf/from-template-examples)
 
 You can have as many template folders under `.templates`, you
 can also override installed templates, include them, and change
@@ -37,9 +37,10 @@ their configuration if required.
 
 ## from-template.js examples
 Here are a few examples of possible from-template.js configurations.
-You can see them in action in the `examples` directory.
+You can see them in action in the [examples repository](https://github.com/stephenwf/from-template-examples).
+
 If you want to try them out yourself, you can clone this repository, 
-run `npm install` and `npm run link`. Then go into: `examples/demo-project` and
+run `lerna bootstrap`. Then go into: `packages/demo-project` and
 start running any of the npm scripts (see package.json) to generate
 some components.
 
