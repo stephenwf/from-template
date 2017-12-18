@@ -1,53 +1,56 @@
 import program from 'commander';
-import copy from 'copy-template-dir';
 import optimist from 'optimist';
 import prettyError from 'pretty-error';
-import path from 'path';
 import fromTemplatePackageJson from '../package.json';
 import chalk from 'chalk';
-import Ask from './ask';
+import inquirer from 'inquirer-promise';
 import {
   configurePrettyError,
-  getFromTemplateFile,
-  getInputDirectory,
-  getPackageJson,
-  getTemplateDirectory
-} from './helpers';
+  findLocalPlugins,
+  findNpmPlugins,
+  installFromTemplate,
+} from './index';
 
 configurePrettyError(prettyError.start());
-
-function handleError(err) {
-  console.log(err);
-  process.exit(1);
-}
 
 program
     .version(fromTemplatePackageJson.version)
     .arguments('<package>')
-    .action(async function (packageName) {
-      const rootDirectory = getInputDirectory(packageName);
-      const config = await getFromTemplateFile(rootDirectory, packageName).catch(handleError);
-      const packageJson = getPackageJson();
-      const argv = optimist.argv;
-      const ask = new Ask(argv);
+    .action(async packageName => {
+      await installFromTemplate(packageName, optimist.argv);
+      process.exit(0);
+    }).parse(process.argv);
 
-      const {_template, ...generatedConfig} = await Promise.resolve(config({
-        ask,
-        argv,
-        packageJson,
-        targetProject: process.cwd()
-      })).catch(handleError);
 
-      const templatePath = getTemplateDirectory(rootDirectory, _template);
-      const destination = process.cwd();
+if (typeof program.args[0] === 'undefined') {
+  async function findAllPlugins() {
 
-      await copy(templatePath, destination, generatedConfig, (err, createdFiles) => {
-        if (err) handleError(err);
+    const npmPlugins = await findNpmPlugins();
+    const localPlugins = await findLocalPlugins();
 
-        createdFiles.forEach(filePath => console.log(`${chalk.green('+ Created')} ${path.relative(process.cwd(), filePath)}`));
-        console.log('');
-        console.log(chalk.green(`Template ${packageName} installed`));
-      });
+    if (npmPlugins.length === 0 && localPlugins.length) {
+      console.log(chalk.yellow('We didn\'t find any templates available to use.'));
+      process.exit(0);
+    }
 
-    })
-    .parse(process.argv);
+    const separator = npmPlugins.length > 0 && localPlugins.length > 0 ? new inquirer.Separator() : null;
+
+    const toInstall = await inquirer.checkbox('Which templates would you like to install?', {
+      choices: [...npmPlugins, separator, ...localPlugins ].filter(e => e)
+    });
+
+    if (toInstall.length === 0) {
+      process.exit(0);
+    }
+
+    let currentPackageNumber = 0;
+    for (const packageName of toInstall) {
+      currentPackageNumber += 1;
+      await installFromTemplate(packageName, {}, currentPackageNumber, toInstall.length);
+    }
+  }
+
+  findAllPlugins().then(() => {
+    process.exit(0);
+  });
+}
