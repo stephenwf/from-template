@@ -127,7 +127,6 @@ function parseConfigurationValue(name, config, {
 
 export function parseJsonConfiguration(json) {
   return async (options) => {
-    console.log('HERE 3');
     const fields = Object.keys(json);
 
     return fields.reduce(async (futureState, fieldKey) => {
