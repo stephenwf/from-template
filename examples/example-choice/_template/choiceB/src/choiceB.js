@@ -1,1 +1,0 @@
-export default "Choice B {{name}}";
