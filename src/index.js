@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs-extra';
-import copy from 'copy-template-dir';
+import copy from 'stephenwf-fork-copy-template-dir';
 import findPlugins from 'find-plugins';
 import chalk from 'chalk';
 import Ask from './ask';
