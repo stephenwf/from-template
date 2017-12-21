@@ -2,6 +2,7 @@
 
 ![from-template](https://user-images.githubusercontent.com/8266711/34106471-3b2499b2-e3f0-11e7-92c7-53812f4753f4.gif)
 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fstephenwf%2Ffrom-template.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fstephenwf%2Ffrom-template?ref=badge_shield)
 
 Install:
 ```bash
@@ -155,3 +156,7 @@ ask.input will as the user for a line of text, returning a string
 ```
 ask.input(name: String, message: Sting, [ defaultValue: String ]): String
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fstephenwf%2Ffrom-template.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fstephenwf%2Ffrom-template?ref=badge_large)
