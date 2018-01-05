@@ -96,9 +96,16 @@ export function getTemplateDirectory(inputDirectory, _template) {
   return inDir;
 }
 
-function parseConfigurationValue(name, config, {
+export function parseConfigurationValue(name, config, {
   ask,
 }) {
+  if (
+      typeof config === 'string' ||
+      (typeof config === 'number' && Number.isInteger(config))
+  ) {
+    return Promise.resolve(config);
+  }
+
   if (
     typeof config !== 'object' ||
     Array.isArray(config)
@@ -164,15 +171,11 @@ export function canRead(file) {
   return true;
 }
 
-function resolveModuleQuiet(name) {
+export function resolveModuleQuiet(name) {
   try {
-    return require.resolve(`${name}/from-template.js`);
+    return require.resolve(path.join(name, 'from-template'));
   } catch (err) {
-    try {
-      return require.resolve(`${name}/from-template.json`);
-    } catch (err) {
-      return null;
-    }
+    return null;
   }
 }
 

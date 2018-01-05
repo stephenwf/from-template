@@ -12,6 +12,9 @@
   "scripts": {
     "build": "nwb build-web-module",
     "clean": "nwb clean-module",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "coverage": "jest --coverage",
     "prepublish": "npm run build",
     "link": "./link.sh"
   },
@@ -29,8 +32,28 @@
     "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.0.4",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "nwb": "0.19.x"
+    "babel-polyfill": "latest",
+    "babel-preset-es2015": "^6.24.1",
+    "coveralls": "^3.0.0",
+    "jest": "^22.0.4",
+    "nwb": "0.19.x",
+    "regenerator-runtime": "^0.11.1"
+  },
+  "jest": {
+    "testMatch": [
+      "(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$",
+      "**/?(*.)(spec|test).js?(x)"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "html"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/jest.transform.js"
+    }
   },
   "author": "Stephen Fraser <stephen.fraser@digirati.com>",
   "homepage": "",
