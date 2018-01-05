@@ -49,6 +49,7 @@
     ],
     "collectCoverage": true,
     "coverageReporters": [
+      "lcov",
       "html"
     ],
     "transform": {
