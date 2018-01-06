@@ -4,6 +4,8 @@
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fstephenwf%2Ffrom-template.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fstephenwf%2Ffrom-template?ref=badge_shield)
 
+[![Coverage Status](https://coveralls.io/repos/github/stephenwf/from-template/badge.svg?branch=master)](https://coveralls.io/github/stephenwf/from-template?branch=master)
+
 Install:
 ```bash
 $ npm install from-template --save-dev
