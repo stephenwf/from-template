@@ -2,9 +2,7 @@
 
 ![from-template](https://user-images.githubusercontent.com/8266711/34106471-3b2499b2-e3f0-11e7-92c7-53812f4753f4.gif)
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fstephenwf%2Ffrom-template.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fstephenwf%2Ffrom-template?ref=badge_shield)
-
-[![Coverage Status](https://coveralls.io/repos/github/stephenwf/from-template/badge.svg?branch=master)](https://coveralls.io/github/stephenwf/from-template?branch=master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fstephenwf%2Ffrom-template.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fstephenwf%2Ffrom-template?ref=badge_shield) [![Coverage Status](https://coveralls.io/repos/github/stephenwf/from-template/badge.svg?branch=master)](https://coveralls.io/github/stephenwf/from-template?branch=master)
 
 Install:
 ```bash
