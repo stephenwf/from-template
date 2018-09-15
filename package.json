@@ -32,7 +32,7 @@
     "webpack-node-externals": "1.6.0"
   },
   "devDependencies": {
-    "babel-core": "6.26.0",
+    "babel-core": "6.26.3",
     "babel-jest": "22.0.4",
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-polyfill": "latest",
