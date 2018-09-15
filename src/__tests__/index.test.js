@@ -3,7 +3,7 @@ import {
   parseConfigurationValue,
   resolveModuleQuiet,
 } from '../index';
-import * as path from 'path';
+import path from 'path';
 import Ask from '../ask';
 
 async function runInDirectory(dir, fn) {
