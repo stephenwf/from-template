@@ -29,7 +29,7 @@
     "inquirer-promise": "1.0.0",
     "optimist": "0.6.1",
     "pretty-error": "2.1.1",
-    "webpack-node-externals": "1.6.0"
+    "webpack-node-externals": "1.7.2"
   },
   "devDependencies": {
     "babel-core": "6.26.3",
