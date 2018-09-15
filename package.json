@@ -39,7 +39,7 @@
     "babel-preset-es2015": "6.24.1",
     "coveralls": "3.0.2",
     "jest": "23.6.0",
-    "nwb": "0.19.2",
+    "nwb": "0.23.0",
     "regenerator-runtime": "0.12.1"
   },
   "jest": {
